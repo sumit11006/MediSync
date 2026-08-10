@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "194949960584",
+    "project_id": "drugbee-1717",
+    "storage_bucket": "drugbee-1717.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:194949960584:android:2f354a465d10deae6de03d",
+        "android_client_info": {
+          "package_name": "com.drugbee.drugbee"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJ5s1GDNyHaGpu9Z6y4we7C_IZwWGoS0c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
