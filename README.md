@@ -1,16 +1,56 @@
-# MediSync
+# 🩺 MediSync
 
-MediSync is a Flutter-based medicine ordering and admin management app with Firebase-backed authentication, Firestore data storage, Cloudinary uploads, and a small WhatsApp OTP backend.
+<p align="center">
+  <b>A Cross-Platform Medicine Ordering & Healthcare Management Ecosystem</b>
+</p>
 
-## Project Layout
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-Cross--Platform-blue?style=flat-square&logo=flutter" alt="Flutter">
+  <img src="https://img.shields.io/badge/Node.js-Backend-green?style=flat-square&logo=nodedotjs" alt="Node.js">
+  <img src="https://img.shields.io/badge/Firebase-Firestore%20%26%20Auth-orange?style=flat-square&logo=firebase" alt="Firebase">
+  <img src="https://img.shields.io/badge/Cloudinary-Media%20Storage-blueviolet?style=flat-square&logo=cloudinary" alt="Cloudinary">
+</p>
 
-The repository contains the Flutter app in the root `lib/` directory, Firebase platform files under `android/`, `ios/`, `web/`, `windows/`, `linux/`, and `macos/`, and the WhatsApp bot backend in `drugbee_backend/`.
+---
 
-## Secrets And Env
+## 🚀 About The Project
 
-Hardcoded service keys were removed from the Flutter auth and upload flow. The app now reads them from the root `.env` file through `flutter_dotenv`.
+**MediSync** is an end-to-end full-stack healthcare platform engineered to bridge the gap between patients, pharmacies, and administrators. It features a cross-platform Flutter application paired with an independent Node.js microservice handling WhatsApp-based verification flows. Designed specifically to streamline critical medicine procurement and administrative oversight, the ecosystem handles secure data storage, fast media rendering, and reliable communication pipelines.
 
-Use the following variables:
+---
+
+## 🛠️ Tech Stack & Architecture
+
+* **Frontend Client:** Flutter (Cross-platform UI for mobile and web deployment)
+* **Backend Microservice:** Node.js (WhatsApp OTP and bot logic handler)
+* **Database & Security:** Firebase Firestore (Real-time data synchronization) & Firebase Authentication
+* **Media Management:** Cloudinary (Dynamic uploads for assets and banner management)
+* **Verification Flow:** Renflair API integrated via WhatsApp messaging channels
+
+---
+
+## 📁 Project Structure
+
+```text
+MediSync/
+├── lib/                      # Core Flutter application source files & UI components
+├── android/                  # Android-specific platform configurations & Firebase setup
+├── ios/                      # iOS-specific platform configurations & entitlements
+├── web/                      # Web platform entry points and assets
+├── windows/                  # Windows desktop embedding layer
+├── linux/                    # Linux desktop embedding layer
+├── macos/                    # macOS desktop embedding layer
+└── drugbee_backend/          # Node.js backend workspace for WhatsApp OTP workflows
+```
+
+---
+
+## ⚙️ Environment Variables & Configuration
+
+Hardcoded secrets have been decoupled from the client code base. The app securely reads environment variables from a root `.env` file via `flutter_dotenv`.
+
+1. Copy the template or create a root `.env` file.
+2. Populate the required keys:
 
 ```env
 RENFLAIR_API_KEY=your-renflair-key
@@ -20,32 +60,56 @@ CLOUDINARY_UPLOAD_PRESET=your-upload-preset
 CLOUDINARY_BANNER_UPLOAD_PRESET=your-banner-upload-preset
 ```
 
-Copy `.env.example` to `.env` and fill in your values. The root `.env` file is ignored by git.
+> **Security Note:** Firebase `apiKey` credentials found in `lib/firebase_options.dart` and `android/app/google-services.json` are public client keys by design. Keep server-side credentials and private service-account keys strictly out of version control.
 
-Firebase `apiKey` values in `lib/firebase_options.dart` and `android/app/google-services.json` are public client configuration, not server secrets. Keep private service-account credentials out of the repository.
+---
 
-## Setup
+## 🚀 Setup & Installation
 
-1. Install Flutter and Node.js.
-2. Run `flutter pub get` from the project root.
-3. Install backend dependencies with `cd drugbee_backend && npm install`.
-4. Make sure `.env` is populated before launching the app.
+Ensure you have **Flutter SDK** and **Node.js** installed on your workstation before proceeding.
 
-## Run The App
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/sumit11006/MediSync.git
+   cd MediSync
+   ```
 
-```bash
-flutter run
-```
+2. **Install Flutter Dependencies:**
+   ```bash
+   flutter pub get
+   ```
 
-## Run The Backend
+3. **Install Backend Dependencies:**
+   ```bash
+   cd drugbee_backend
+   npm install
+   cd ..
+   ```
 
+4. **Configure Environment:**
+   Ensure your root `.env` file is filled with valid API keys and upload presets.
+
+---
+
+## ▶️ Running the Application
+
+### 1. Launch the Backend Server
+Navigate to the backend folder and start the Node.js server (defaults to port `3000` or the environment's `PORT` variable):
 ```bash
 cd drugbee_backend
 node index.js
 ```
 
-The backend listens on `PORT` if defined, otherwise it uses `3000`.
+### 2. Run the Flutter Application
+Open a separate terminal window at the project root and launch the client:
+```bash
+flutter run
+```
 
-## Notes
+---
 
-The app uses Firebase Firestore, Cloudinary for uploads, and WhatsApp-based OTP flows for registration and PIN reset. If you rotate any external service key, update `.env` locally and rebuild the app.
+## 💡 Notes & Maintenance
+
+* The system leverages Cloudinary for handling media uploads and Firestore for persistent document management.
+* WhatsApp-based OTP services manage user registration and PIN recovery loops.
+* If any external provider key is rotated, update your local `.env` configuration file immediately and trigger a fresh client build.
